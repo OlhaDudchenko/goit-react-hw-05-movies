@@ -1,0 +1,63 @@
+import { useEffect, useState } from "react";
+import { Link, useRouteMatch, useHistory, useLocation } from "react-router-dom";
+import * as movieAPI from "../../services/movies-api";
+import { SearchBar } from "../SearchBar/SearchBar";
+import {
+  MovieList,
+  MovieItem,
+  MovieImage,
+} from "../HomepageView/HomePageView.styled";
+import Clip from "../../images/Clip.jpg";
+const imageSRC = "https://image.tmdb.org/t/p/w500";
+
+export default function MoviesPage() {
+  const history = useHistory();
+  const location = useLocation();
+  const { url } = useRouteMatch();
+
+  const [movies, setMovies] = useState(null);
+
+  const SearchValue = new URLSearchParams(location.search).get("query") ?? "";
+
+  const handleOnSubmitform = (value) => {
+    history.push({
+      ...location,
+      search: `query=${value}`,
+    });
+  };
+
+  useEffect(() => {
+    if (!SearchValue) {
+      return;
+    }
+    movieAPI.fetchMovieBySearchValue(SearchValue).then(setMovies);
+  }, [SearchValue]);
+  return (
+    <>
+      <SearchBar onSubmit={handleOnSubmitform}></SearchBar>
+      {movies && (
+        <MovieList>
+          {movies.map((movie) => (
+            <MovieItem key={movie.id}>
+              <Link
+                to={{
+                  pathname: `${url}/${movie.id}`,
+                  state: { from: location },
+                }}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MovieImage
+                  src={
+                    movie.poster_path ? `${imageSRC}${movie.poster_path}` : Clip
+                  }
+                  alt={movie.name ?? movie.title}
+                />
+                <p> {movie.title}</p>
+              </Link>
+            </MovieItem>
+          ))}
+        </MovieList>
+      )}
+    </>
+  );
+}
