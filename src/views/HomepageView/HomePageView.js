@@ -12,7 +12,7 @@ export default function HomePage() {
     movieAPI.fetchTrendingForToday().then(setMovies);
   }, []);
 
-  console.log(movies);
+  //   console.log(movies);
   return (
     <>
       <h2>Trending Today</h2>

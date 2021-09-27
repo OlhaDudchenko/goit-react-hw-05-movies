@@ -25,6 +25,7 @@ export default function MovieDetailsView() {
   const [error, setError] = useState(null);
   const location = useLocation();
   const history = useHistory();
+  const prevLocation = location?.state?.from ?? "/";
 
   useEffect(() => {
     movieAPI
@@ -42,7 +43,7 @@ export default function MovieDetailsView() {
   };
 
   const OnGoBack = () => {
-    history.push(location?.state?.from ?? "/");
+    history.push(location?.state?.from ?? "/movies");
   };
 
   return (
@@ -73,14 +74,16 @@ export default function MovieDetailsView() {
           <CastList>
             Additional information
             <li>
-              {" "}
               <NavLink
                 style={{ textDecoration: "none", color: "inherit" }}
                 activeStyle={{
                   fontWeight: "bold",
                   color: "blue",
                 }}
-                to={`${url}/cast`}
+                to={{
+                  pathname: `${url}/cast`,
+                  state: { from: prevLocation },
+                }}
               >
                 Cast
               </NavLink>
@@ -92,7 +95,10 @@ export default function MovieDetailsView() {
                   fontWeight: "bold",
                   color: "blue",
                 }}
-                to={`${url}/reviews`}
+                to={{
+                  pathname: `${url}/reviews`,
+                  state: { from: prevLocation },
+                }}
               >
                 Reviews
               </NavLink>
