@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import * as movieAPI from "../../services/movies-api";
-import { MovieList, MovieItem, MovieImage } from "./HomePageView.styled";
-import Clip from "../../images/Clip.jpg";
+import {
+  MovieList,
+  MovieItem,
+  MovieImage,
+  Title,
+  HomepageTitle,
+} from "./HomePageView.styled";
+import noPoster from "../../images/no-poster.jpg";
 const imageSRC = "https://image.tmdb.org/t/p/w500";
 
 export default function HomePage() {
@@ -15,7 +21,7 @@ export default function HomePage() {
   //   console.log(movies);
   return (
     <>
-      <h2>Trending Today</h2>
+      <HomepageTitle>Trending Today</HomepageTitle>
 
       {movies && (
         <MovieList>
@@ -30,11 +36,13 @@ export default function HomePage() {
               >
                 <MovieImage
                   src={
-                    movie.poster_path ? `${imageSRC}${movie.poster_path}` : Clip
+                    movie.poster_path
+                      ? `${imageSRC}${movie.poster_path}`
+                      : noPoster
                   }
                   alt={movie.name ?? movie.title}
                 />
-                <p>{movie.name ?? movie.title}</p>
+                <Title>{movie.name ?? movie.title}</Title>
               </Link>
             </MovieItem>
           ))}

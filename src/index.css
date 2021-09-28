@@ -5,6 +5,11 @@ body {
   font-weight: 700;
   font-size: 18px;
   text-align: center;
+  background-image: url("./images/kadr.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: rgb(33, 83, 128);
 }
 
 code {

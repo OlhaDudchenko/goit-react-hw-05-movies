@@ -6,8 +6,9 @@ import {
   MovieList,
   MovieItem,
   MovieImage,
+  Title,
 } from "../HomepageView/HomePageView.styled";
-import Clip from "../../images/Clip.jpg";
+import noPoster from "../../images/no-poster.jpg";
 const imageSRC = "https://image.tmdb.org/t/p/w500";
 
 export default function MoviesPage() {
@@ -48,11 +49,13 @@ export default function MoviesPage() {
               >
                 <MovieImage
                   src={
-                    movie.poster_path ? `${imageSRC}${movie.poster_path}` : Clip
+                    movie.poster_path
+                      ? `${imageSRC}${movie.poster_path}`
+                      : noPoster
                   }
                   alt={movie.name ?? movie.title}
                 />
-                <p> {movie.title}</p>
+                <Title> {movie.title}</Title>
               </Link>
             </MovieItem>
           ))}

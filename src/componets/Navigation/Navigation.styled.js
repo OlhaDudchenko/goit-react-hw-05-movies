@@ -6,6 +6,11 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   padding: 12px;
   font-weight: 500;
-  color: #2a363b;
+  color: inherit;
   font-size: 18px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;

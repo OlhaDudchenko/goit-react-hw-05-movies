@@ -8,7 +8,7 @@ export function Navigation() {
         to="/"
         activeStyle={{
           fontWeight: "bold",
-          color: "blue",
+          color: "rgb(250, 179, 12)",
         }}
       >
         Home
@@ -17,7 +17,7 @@ export function Navigation() {
         to="/movies"
         activeStyle={{
           fontWeight: "bold",
-          color: "blue",
+          color: "rgb(242, 175, 19)",
         }}
       >
         Movies

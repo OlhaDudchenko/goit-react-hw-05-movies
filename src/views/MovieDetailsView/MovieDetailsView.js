@@ -63,7 +63,7 @@ export default function MovieDetailsView() {
               width="250"
               height="300"
             />
-            <div>
+            <div style={{ width: "480px" }}>
               <p>user score: {movie.vote_average * 10}%</p>
               <p>Owerview:</p>
               <p>{movie.overview}</p>
@@ -71,8 +71,8 @@ export default function MovieDetailsView() {
               <span>{genres(movie.genres)}</span>
             </div>
           </div>
+          <p style={{ textAlign: "left" }}>Additional information :</p>
           <CastList>
-            Additional information
             <li>
               <NavLink
                 style={{ textDecoration: "none", color: "inherit" }}
