@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, Input } from "./SearchBar.styled";
+import { Button, Input, Form } from "./SearchBar.styled";
+import { FiSearch } from "react-icons/fi";
 
 export function SearchBar({ onSubmit }) {
   const [SearchValue, setSearchValue] = useState("");
@@ -21,18 +22,21 @@ export function SearchBar({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleOnSubmitform}>
+      <Form onSubmit={handleOnSubmitform}>
         <label>
-          <span>Movie: </span>
           <Input
             type="text"
             name="movie"
             onChange={handleInputValue}
             value={SearchValue}
+            placeholder="Movie"
           />
         </label>
-        <Button type="submit">Search</Button>
-      </form>
+
+        <Button type="submit">
+          <FiSearch />
+        </Button>
+      </Form>
     </>
   );
 }

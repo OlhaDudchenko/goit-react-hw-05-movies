@@ -14,6 +14,7 @@ const imageSRC = "https://image.tmdb.org/t/p/w500";
 export default function MoviesPage() {
   const history = useHistory();
   const location = useLocation();
+
   const { url } = useRouteMatch();
 
   const [movies, setMovies] = useState(null);
@@ -26,6 +27,9 @@ export default function MoviesPage() {
       search: `query=${value}`,
     });
   };
+  // const onClick = (event) => {
+  //   console.log(event.target.alt)
+  // }
 
   useEffect(() => {
     if (!SearchValue) {
@@ -48,6 +52,7 @@ export default function MoviesPage() {
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MovieImage
+                  // onClick={onClick}
                   src={
                     movie.poster_path
                       ? `${imageSRC}${movie.poster_path}`

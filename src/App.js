@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { SiteNav } from "./componets/SiteNav/SiteNav";
+import { Section } from "./componets/Section/Section";
 import "./App.css";
 
 const HomePage = lazy(() =>
@@ -26,20 +27,26 @@ const MovieDetailsView = lazy(() =>
 
 export function App() {
   return (
-    <div style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+    <div>
       <SiteNav />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route path="/" exact>
-            <HomePage />
+            <Section>
+              <HomePage />
+            </Section>
           </Route>
 
           <Route path="/movies" exact>
-            <MoviesPage />
+            <Section>
+              <MoviesPage />
+            </Section>
           </Route>
 
           <Route path="/movies/:movieId">
-            <MovieDetailsView />
+            <Section>
+              <MovieDetailsView />
+            </Section>
           </Route>
 
           <Route>

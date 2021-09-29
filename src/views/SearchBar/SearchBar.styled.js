@@ -1,35 +1,46 @@
 import styled from "@emotion/styled";
 
 export const Button = styled.button`
-  display: inline-block;
+  display: inline-flex;
   font-size: 18px;
   font: inherit;
-  padding: 2.5px;
+  padding: 4px;
   cursor: pointer;
-  outline: none;
   color: inherit;
-  background-color: rgba(33, 83, 128, 0.3);
-  border-color: rgba(33, 83, 128, 0.3);
-  border-radius: 4px;
+  background-color: transparent;
+  border: none;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     transform: scale(1.01);
   }
 `;
+
 export const Input = styled.input`
-  font: inherit;
-  font-size: 20px;
-  outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
-  margin-right: 5px;
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid rgb(33, 83, 128);
+  outline: 0;
+  font-size: 1.3rem;
   color: inherit;
-  border-color: rgba(33, 83, 128, 0.3);
-  border-radius: 4px;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
   &::placeholder {
-    font: inherit;
-    font-size: 18px;
     color: inherit;
   }
+`;
+export const InputWrapper = styled.div`
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
