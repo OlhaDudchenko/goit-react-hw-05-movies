@@ -2,8 +2,8 @@ import { useParams, Route } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { useRouteMatch, useLocation, useHistory } from "react-router-dom";
 import * as movieAPI from "../../services/movies-api";
-import { FcLeft } from "react-icons/fc";
 import { IoIosArrowDropleft } from "react-icons/io";
+import { Tooltip } from "../../componets/Tooltip/Tooltip";
 import {
   CastList,
   MovieTitle,
@@ -70,7 +70,7 @@ export default function MovieDetailsView() {
               style={{ marginRight: "20px" }}
               src={`${imageSRC}${movie.poster_path}`}
               alt={movie.title}
-              width="250"
+              width="220"
               height="300"
             />
             <div style={{ width: "480px" }}>
@@ -87,33 +87,37 @@ export default function MovieDetailsView() {
               <Info>Additional information :</Info>
               <CastList>
                 <li>
-                  <StyledNavLink
-                    activeStyle={{
-                      fontWeight: "bold",
-                      color: "blue",
-                    }}
-                    to={{
-                      pathname: `${url}/cast`,
-                      state: { from: prevLocation },
-                    }}
-                  >
-                    Cast
-                  </StyledNavLink>
+                  <Tooltip label="Click to see more information">
+                    <StyledNavLink
+                      activeStyle={{
+                        fontWeight: "bold",
+                        color: "rgb(252, 151, 0)",
+                      }}
+                      to={{
+                        pathname: `${url}/cast`,
+                        state: { from: prevLocation },
+                      }}
+                    >
+                      Cast
+                    </StyledNavLink>
+                  </Tooltip>
                 </li>
                 <li>
-                  <StyledNavLink
-                    style={{ marginLeft: "5px" }}
-                    activeStyle={{
-                      fontWeight: "bold",
-                      color: "blue",
-                    }}
-                    to={{
-                      pathname: `${url}/reviews`,
-                      state: { from: prevLocation },
-                    }}
-                  >
-                    Reviews
-                  </StyledNavLink>
+                  <Tooltip label="Click to see more information">
+                    <StyledNavLink
+                      style={{ marginLeft: "5px" }}
+                      activeStyle={{
+                        fontWeight: "bold",
+                        color: "rgb(252, 151, 0)",
+                      }}
+                      to={{
+                        pathname: `${url}/reviews`,
+                        state: { from: prevLocation },
+                      }}
+                    >
+                      Reviews
+                    </StyledNavLink>
+                  </Tooltip>
                 </li>
               </CastList>
             </div>

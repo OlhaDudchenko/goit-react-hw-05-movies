@@ -2,13 +2,13 @@ import { StyledNavLink } from "./Navigation.styled";
 
 export function Navigation() {
   return (
-    <nav>
+    <nav style={{ paddingBottom: "20px" }}>
       <StyledNavLink
         exact
         to="/"
         activeStyle={{
           fontWeight: "bold",
-          color: "rgb(250, 179, 12)",
+          color: "rgb(252, 151, 0)",
         }}
       >
         Home
@@ -17,7 +17,7 @@ export function Navigation() {
         to="/movies"
         activeStyle={{
           fontWeight: "bold",
-          color: "rgb(242, 175, 19)",
+          color: "rgb(252, 151, 0)",
         }}
       >
         Movies

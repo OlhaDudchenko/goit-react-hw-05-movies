@@ -7,7 +7,7 @@ export const StyledNavLink = styled(NavLink)`
   padding: 12px;
   font-weight: 500;
   color: inherit;
-  font-size: 18px;
+  font-size: 20px;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {

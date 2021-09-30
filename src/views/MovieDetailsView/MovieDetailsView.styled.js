@@ -20,6 +20,7 @@ export const CastList = styled.ul`
 
 export const MovieTitle = styled.h2`
   margin: 0;
+  color: rgb(252, 151, 0);
 `;
 export const Score = styled.p`
   margin: 0;
@@ -51,7 +52,7 @@ export const Info = styled.p`
 export const MovieInfo = styled.div`
   display: inline-flex;
   text-align: left;
-  margin-top: 30px;
+  margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.6);
   padding: 50px 40px;
   border-radius: 5px;
