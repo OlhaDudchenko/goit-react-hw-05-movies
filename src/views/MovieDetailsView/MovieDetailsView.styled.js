@@ -68,13 +68,10 @@ export const Button = styled.button`
   font: inherit;
   padding: 2.5px;
   cursor: pointer;
-  /* outline: none; */
   color: inherit;
   border: none;
   background-color: transparent;
   color: rgb(33, 83, 128);
-  /* border-color: rgba(33, 83, 128, 0.3); */
-  /* border-radius: 50%; */
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {

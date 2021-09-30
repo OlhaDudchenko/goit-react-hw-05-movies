@@ -25,8 +25,7 @@ export const Input = styled.input`
   font-size: 18px;
   color: inherit;
   padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
+  background-color: transparent;
 
   &::placeholder {
     color: inherit;

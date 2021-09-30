@@ -11,17 +11,17 @@ function fetchMovie(url = "", config = {}, key = "") {
   });
 }
 
-export function fetchTrendingForToday() {
-  return fetchMovie(`${BASE_URL}/trending/all/day?api_key=${KEY}`).then(
-    ({ results }) => {
-      return results;
-    }
-  );
+export function fetchTrendingForToday(page) {
+  return fetchMovie(
+    `${BASE_URL}/trending/all/day?api_key=${KEY}&page=${page}`
+  ).then(({ results }) => {
+    return results;
+  });
 }
 
-export function fetchMovieBySearchValue(value) {
+export function fetchMovieBySearchValue(value, page) {
   return fetchMovie(`
-${BASE_URL}/search/movie?api_key=${KEY}&query=${value}&language=en-US&page=1&include_adult=false`).then(
+${BASE_URL}/search/movie?api_key=${KEY}&query=${value}&language=en-US&page=${page}&include_adult=false`).then(
     ({ results }) => {
       return results;
     }
