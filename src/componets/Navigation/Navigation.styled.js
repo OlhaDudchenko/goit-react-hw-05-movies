@@ -8,7 +8,8 @@ export const StyledNavLink = styled(NavLink)`
   font-weight: 500;
   color: inherit;
   font-size: 20px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${(props) =>
+    `transform ${props.theme.transaction.time},${props.theme.transaction.timeFunction} `};
 
   &:hover {
     transform: scale(1.03);

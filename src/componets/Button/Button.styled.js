@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 export const ButtonLoadMore = styled.button`
   padding: 8px 16px;
   border-radius: 2px;
-  background-color: rgb(33, 83, 128);
+  background-color: ${(props) => props.theme.colors.main};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   display: inline-block;
-  color: rgb(252, 151, 0);
+  color: ${(props) => props.theme.colors.accent};
   border: 0;
   text-decoration: none;
   cursor: pointer;
@@ -21,6 +21,6 @@ export const ButtonLoadMore = styled.button`
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   &:hover,
   &:focus {
-    background-color: #303f9f;
+    transform: scale(1.02);
   }
 `;

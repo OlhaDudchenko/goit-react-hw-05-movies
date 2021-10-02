@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { SiteNav } from "./componets/SiteNav/SiteNav";
 import { Section } from "./componets/Section/Section";
+import { Footer } from "./componets/Footer/Footer";
 import "./App.css";
 
 const HomePage = lazy(() =>
@@ -27,7 +28,7 @@ const MovieDetailsView = lazy(() =>
 
 export function App() {
   return (
-    <div>
+    <>
       <SiteNav />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
@@ -54,6 +55,7 @@ export function App() {
           </Route>
         </Switch>
       </Suspense>
-    </div>
+      <Footer />
+    </>
   );
 }

@@ -3,7 +3,9 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { useRouteMatch, useLocation, useHistory } from "react-router-dom";
 import * as movieAPI from "../../services/movies-api";
 import { IoIosArrowDropleft } from "react-icons/io";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Tooltip } from "../../componets/Tooltip/Tooltip";
+import { Modal } from "../../componets/Modal/Modal";
 import {
   CastList,
   MovieTitle,
@@ -17,6 +19,7 @@ import {
   ScoreText,
   Wrapper,
   Button,
+  ButtonClose,
 } from "./MovieDetailsView.styled";
 
 const imageSRC = "https://image.tmdb.org/t/p/w500";
@@ -33,6 +36,7 @@ export default function MovieDetailsView() {
   const { url } = useRouteMatch();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
+  const [modal, setModal] = useState(false);
   const location = useLocation();
   const history = useHistory();
   const prevLocation = location?.state?.from ?? "/";
@@ -56,6 +60,11 @@ export default function MovieDetailsView() {
     history.push(location?.state?.from ?? "/");
   };
 
+  const toggleModal = () => {
+    setModal((prevModal) => !prevModal);
+    console.log(modal);
+  };
+  // console.log(modal)
   return (
     <>
       {error && <h2>Sorry,there is no information about this film</h2>}
@@ -97,6 +106,7 @@ export default function MovieDetailsView() {
                         pathname: `${url}/cast`,
                         state: { from: prevLocation },
                       }}
+                      onClick={toggleModal}
                     >
                       Cast
                     </StyledNavLink>
@@ -114,6 +124,7 @@ export default function MovieDetailsView() {
                         pathname: `${url}/reviews`,
                         state: { from: prevLocation },
                       }}
+                      onClick={toggleModal}
                     >
                       Reviews
                     </StyledNavLink>
@@ -124,11 +135,32 @@ export default function MovieDetailsView() {
           </MovieInfo>
         </Wrapper>
       )}
-
       <Suspense fallback={<div>Loading...</div>}>
+        <Route path="/movies/:movieId/cast">
+          {movie && modal && (
+            <Modal onCloseModal={toggleModal}>
+              <CastView />
+              <ButtonClose type="button" onClick={toggleModal}>
+                <AiOutlineCloseCircle size={25} />
+              </ButtonClose>
+            </Modal>
+          )}
+        </Route>
+        <Route path="/movies/:movieId/reviews">
+          {movie && modal && (
+            <Modal onCloseModal={toggleModal}>
+              <Reviews />{" "}
+              <ButtonClose type="button" onClick={toggleModal}>
+                <AiOutlineCloseCircle size={25} />
+              </ButtonClose>
+            </Modal>
+          )}
+        </Route>
+      </Suspense>
+      {/* <Suspense fallback={<div>Loading...</div>}>
         <Route path="/movies/:movieId/cast">{movie && <CastView />}</Route>
         <Route path="/movies/:movieId/reviews">{movie && <Reviews />}</Route>
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

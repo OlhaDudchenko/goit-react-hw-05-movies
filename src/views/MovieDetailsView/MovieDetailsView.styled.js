@@ -6,7 +6,7 @@ export const StyledNavLink = styled(NavLink)`
   color: inherit;
   font-size: 17px;
   font-weight: 600;
-  color: rgb(39, 49, 64);
+  color: ${(props) => props.theme.colors.dark};
 `;
 
 export const CastList = styled.ul`
@@ -20,14 +20,14 @@ export const CastList = styled.ul`
 
 export const MovieTitle = styled.h2`
   margin: 0;
-  color: rgb(252, 151, 0);
+  color: ${(props) => props.theme.colors.accent};
 `;
 export const Score = styled.p`
   margin: 0;
   margin-top: 8px;
 `;
 export const ScoreText = styled.span`
-  color: rgb(39, 49, 64);
+  color: ${(props) => props.theme.colors.dark};
   font-weight: 600;
 `;
 export const Overview = styled.p`
@@ -39,7 +39,7 @@ export const Text = styled.p`
   margin-top: 4px;
   font-size: 17px;
   font-weight: 600;
-  color: rgb(39, 49, 64);
+  color: ${(props) => props.theme.colors.dark};
 `;
 export const Genres = styled.p`
   margin: 0;
@@ -53,11 +53,10 @@ export const MovieInfo = styled.div`
   display: inline-flex;
   text-align: left;
   margin-top: 20px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: ${(props) => props.theme.colors.milkAccent};
   padding: 50px 40px;
   border-radius: 5px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: ${(props) => props.theme.boxShadow.item};
 `;
 export const Wrapper = styled.div`
   text-align: left;
@@ -71,10 +70,31 @@ export const Button = styled.button`
   color: inherit;
   border: none;
   background-color: transparent;
-  color: rgb(33, 83, 128);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${(props) => props.theme.colors.main};
+  transition: ${(props) =>
+      `transform ${props.theme.transaction.time},${props.theme.transaction.timeFunction}`}
+    250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
+    transform: scale(1.01);
+  }
+`;
+
+export const ButtonClose = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.main};
+  transition: ${(props) =>
+      `transform ${props.theme.transaction.time},${props.theme.transaction.timeFunction}`}
+    250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: ${(props) => props.theme.colors.accent};
     transform: scale(1.01);
   }
 `;

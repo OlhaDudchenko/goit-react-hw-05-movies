@@ -42,10 +42,12 @@ export default function MoviesPage() {
   const incrementPage = () => {
     setPage((prevState) => prevState + 1);
   };
+  console.log(movies);
   return (
     <>
       <SearchBar onSubmit={handleOnSubmitform}></SearchBar>
-      {movies && (
+      {movies.length === 0 && <div style={{ height: "100vh" }}></div>}
+      {movies.length > 0 && (
         <>
           <MovieList>
             {movies.map((movie) => (
